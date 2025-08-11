@@ -1,7 +1,7 @@
 /**
  * @name CurrencyFormat
  * @description Formatting numbers as currency with options for precision, thousands separator, and currency symbol.
- * @version 0.1.2
+ * @version 0.1.4
  * @author pphatdev <pphat.kits.@gmail.com>
  * @license MIT
  *
@@ -14,6 +14,14 @@
  * @returns // [{ origin: "140", options: { trim: true, currencyFormat: 'USD', thousandsSeparator: ',', symbol: '$' }, formatted: "$140.00" }]
  */
 
+
+/**
+ * @typedef {Object} CurrencyFormatOptions
+ * @property {boolean} [trim=false] - Whether to trim the formatted string.
+ * @property {('USD' | 'KHR' | undefined | Uppercase<string>)} [currencyFormat='USD'] - The currency format to use.
+ * @property {string} [thousandsSeparator=','] - The character to use as the thousands separator.
+ * @property {string} [symbol=''] - The currency symbol to prepend.
+*/
 export interface CurrencyFormatOptions {
     trim?: boolean;
     currencyFormat?: 'USD' | 'KHR' | undefined | Uppercase<string>;
@@ -21,11 +29,23 @@ export interface CurrencyFormatOptions {
     symbol?: string;
 }
 
+/**
+ * @typedef {Object} ValueParams
+ * @property {string | number} origin - The original value to format.
+ * @property {CurrencyFormatOptions} options - The formatting options.
+*/
 export interface ValueParams {
     origin: string | number;
     options: CurrencyFormatOptions;
 }
 
+/**
+ * @typedef {Object} FormatOptions
+ * @property {number} [precision=2] - The number of decimal places to include.
+ * @property {string} [thousandsSeparator=','] - The character to use as the thousands separator.
+ * @property {string} [symbol=''] - The currency symbol to prepend.
+ * @property {('USD' | 'KHR')} [format='USD'] - The currency format to use.
+*/
 export interface FormatOptions {
     precision?: number;
     thousandsSeparator?: string;
@@ -33,12 +53,24 @@ export interface FormatOptions {
     format?: CurrencyFormatOptions['currencyFormat'];
 }
 
+
+/**
+ * @typedef {Object} FormatParams
+ * @property {string | number} value - The value to format.
+ * @property {FormatOptions} options - The formatting options.
+*/
 export interface FormatParams {
     value: string | number;
     options: FormatOptions;
 }
 
 
+/**
+ * @typedef {Object} formattedResult
+ * @property {string | number} origin - The original value to format.
+ * @property {CurrencyFormatOptions} options - The formatting options.
+ * @property {string} formatted - The formatted currency string.
+*/
 export interface formattedResult extends ValueParams {
     formatted: string;
 }
@@ -133,34 +165,6 @@ export class CurrencyFormat {
         }
     });
 }
-
-
-export const {
-    /**
-     * Format a number as currency.
-     * @param {FormatParams} param - The parameters for formatting.
-     * @param {string} param.value - The value to format.
-     * @param {FormatOptions} param.options - The formatting options.
-     * @param {number} [param.options.precision] - The number of decimal places to include.
-     * @param {string} [param.options.thousandsSeparator] - The character to use as the thousands separator.
-     * @param {string} [param.options.symbol] - The currency symbol to prepend.
-     * @param {('USD' | 'KHR')} [param.options.format] - The currency format to use.
-     * @returns {string} The formatted currency string.
-    */
-    format,
-
-    /**
-     * Get the default formatting options.
-     * @returns {Object} The default formatting options.
-    */
-    getDefaultOptions,
-
-    /**
-     * The default formatting options.
-     * @type {CurrencyFormatOptions}
-    */
-    defaultOptions
-} = CurrencyFormat;
 
 
 if (typeof window !== "undefined") {
