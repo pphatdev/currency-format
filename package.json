@@ -1,6 +1,6 @@
 {
     "name": "currency-format",
-    "version": "1.0.0",
+    "version": "0.1.2",
     "description": "Formatting numbers as currency with options for precision, thousands separator, and currency symbol. ",
     "main": "dist/index.js",
     "type": "module",

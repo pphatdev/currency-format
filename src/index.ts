@@ -1,27 +1,22 @@
 /**
  * @name CurrencyFormat
  * @description Formatting numbers as currency with options for precision, thousands separator, and currency symbol.
- * @version 1.0.0
+ * @version 0.1.2
  * @author pphatdev <pphat.kits.@gmail.com>
  * @license MIT
  *
  * @example
- * const formatter = new CurrencyFormat([
- *     {
- *         origin: "140",
- *         options: { trim: true, currencyFormat: 'KHR', thousandsSeparator: ',', symbol: '៛' }
- *     },
- *     {
- *         origin: "10000",
- *         options: { trim: true, currencyFormat: 'USD', thousandsSeparator: ',', symbol: '$' }
- *     }
- * ]);
+ * const formatter = new CurrencyFormat([{
+ *      origin: "140",
+ *      options: { trim: true, currencyFormat: 'USD', thousandsSeparator: ',', symbol: '$' }
+ *  },]);
  * console.log(formatter.currency());
+ * @returns // [{ origin: "140", options: { trim: true, currencyFormat: 'USD', thousandsSeparator: ',', symbol: '$' }, formatted: "$140.00" }]
  */
 
 export interface CurrencyFormatOptions {
     trim?: boolean;
-    currencyFormat?: 'USD' | 'KHR' | undefined;
+    currencyFormat?: 'USD' | 'KHR' | undefined | Uppercase<string>;
     thousandsSeparator?: string;
     symbol?: string;
 }
@@ -35,7 +30,7 @@ export interface FormatOptions {
     precision?: number;
     thousandsSeparator?: string;
     symbol?: string;
-    format?: 'USD' | 'KHR';
+    format?: CurrencyFormatOptions['currencyFormat'];
 }
 
 export interface FormatParams {
@@ -48,7 +43,10 @@ export interface formattedResult extends ValueParams {
     formatted: string;
 }
 
-
+/**
+ * CurrencyFormat class for formatting currency values.
+ * Formatting numbers as currency with options for precision, thousands separator, and currency symbol.
+ */
 export class CurrencyFormat {
 
     values: ValueParams[];
@@ -135,6 +133,35 @@ export class CurrencyFormat {
         }
     });
 }
+
+
+export const {
+    /**
+     * Format a number as currency.
+     * @param {FormatParams} param - The parameters for formatting.
+     * @param {string} param.value - The value to format.
+     * @param {FormatOptions} param.options - The formatting options.
+     * @param {number} [param.options.precision] - The number of decimal places to include.
+     * @param {string} [param.options.thousandsSeparator] - The character to use as the thousands separator.
+     * @param {string} [param.options.symbol] - The currency symbol to prepend.
+     * @param {('USD' | 'KHR')} [param.options.format] - The currency format to use.
+     * @returns {string} The formatted currency string.
+    */
+    format,
+
+    /**
+     * Get the default formatting options.
+     * @returns {Object} The default formatting options.
+    */
+    getDefaultOptions,
+
+    /**
+     * The default formatting options.
+     * @type {CurrencyFormatOptions}
+    */
+    defaultOptions
+} = CurrencyFormat;
+
 
 if (typeof window !== "undefined") {
     (window as any).CurrencyFormat = CurrencyFormat;
