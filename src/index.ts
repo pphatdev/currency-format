@@ -86,19 +86,22 @@ export class CurrencyFormat {
         const { value: number, options } = param;
         const { precision = 2, thousandsSeparator = ",", symbol = "", format = "USD" } = options;
 
-        let formatted: number = 0;
+        let formatted: number = number as number;
 
         // check number type
         if (typeof number === "string") {
             formatted = parseFloat(String(number).replace(/[^\d.-]/g, ''));
+            if (isNaN(formatted)) {
+                formatted = 0;
+            }
         }
 
         const amount = format === "KHR"
             ? Math.round(formatted / 100) * 100
             : formatted;
 
-        const round = Math.round((amount + 0.00000000000001) * 100) / 100;
-
+        const factor = Math.pow(10, precision);
+        const round = Math.round((amount + 0.00000000000001) * factor) / factor;
         let formattedNumber = round.toFixed(precision);
 
         if (thousandsSeparator) {
@@ -111,6 +114,7 @@ export class CurrencyFormat {
 
         return symbol + formattedNumber;
     }
+
 
     /**
      * Format values as currency.

@@ -1,24 +1,30 @@
 {
-  "name": "currency-format",
-  "version": "1.0.0",
-  "description": "Formatting numbers as currency with options for precision, thousands separator, and currency symbol. ",
-  "main": "dist/index.js",
-  "type": "module",
-  "scripts": {
-    "dev": "tsc -p tsconfig.json --watch",
-    "build": "tsc -p tsconfig.json"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pphatdev/currency-format.git"
-  },
-  "keywords": [
-    "currency-format"
-  ],
-  "author": "pphatdev <pphat.kits@gmail.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pphatdev/currency-format/issues"
-  },
-  "homepage": "https://github.com/pphatdev/currency-format#readme"
+    "name": "currency-format",
+    "version": "1.0.0",
+    "description": "Formatting numbers as currency with options for precision, thousands separator, and currency symbol. ",
+    "main": "dist/index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "tsc -p tsconfig.json --watch",
+        "test": "jest --config jest.config.js",
+        "build": "tsc -p tsconfig.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pphatdev/currency-format.git"
+    },
+    "keywords": [
+        "currency-format"
+    ],
+    "author": "pphatdev <pphat.kits@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/pphatdev/currency-format/issues"
+    },
+    "homepage": "https://github.com/pphatdev/currency-format#readme",
+    "devDependencies": {
+        "@types/jest": "^30.0.0",
+        "jest": "^30.0.5",
+        "ts-jest": "^29.4.1"
+    }
 }
