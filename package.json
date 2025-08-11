@@ -2,9 +2,8 @@
     "name": "currency-format",
     "version": "0.1.2",
     "description": "Formatting numbers as currency with options for precision, thousands separator, and currency symbol. ",
-    "main": "dist/index.js",
-    "type": "module",
-    "exports": "./src/index.ts",
+    "main": "./dist/esm/index.d.ts",
+    "exports": "./dist/esm/index.d.ts",
     "scripts": {
         "dev": "tsc -p tsconfig.json --watch",
         "test": "jest --config jest.config.js",
