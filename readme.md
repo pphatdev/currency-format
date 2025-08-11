@@ -28,7 +28,7 @@ console.log(
 ### Node
 
 ```typescript
-import CurrencyFormat from 'currency-format';
+import CurrencyFormat from '@pphatdev/currency-format';
 
 CurrencyFormat.format({
   value: 1234.56,

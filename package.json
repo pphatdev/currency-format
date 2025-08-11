@@ -1,5 +1,5 @@
 {
-    "name": "currency-format",
+    "name": "@pphatdev/currency-format",
     "version": "0.1.4",
     "description": "Formatting numbers as currency with options for precision, thousands separator, and currency symbol. ",
     "type": "module",
