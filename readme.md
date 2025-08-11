@@ -12,7 +12,20 @@ jsr add @pphatdev/currency-format
 
 ## Usage
 
-### Basic Formatting
+### Deno
+
+```typescript
+import { CurrencyFormat } from "jsr:@pphatdev/currency-format";
+
+console.log(
+  CurrencyFormat.format({
+    value: 1234.56,
+    options: { format: "USD", symbol: "$", thousandsSeparator: "," }
+  })
+); // "$1,234.56"
+```
+
+### Node
 
 ```typescript
 import CurrencyFormat from 'currency-format';
@@ -120,14 +133,6 @@ const formatter = new CurrencyFormat([
 const result = formatter.currency();
 console.log(result[0].formatted); // "100.00៛"
 console.log(result[1].formatted); // "$10,000.00"
-```
-
-### Get Default Options
-
-```typescript
-CurrencyFormat.getDefaultOptions();
-// => { trim: false, currencyFormat: 'USD', thousandsSeparator: ',', symbol: '' }
-```
 ```
 
 ### Get Default Options

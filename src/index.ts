@@ -140,4 +140,8 @@ if (typeof window !== "undefined") {
     (window as any).CurrencyFormat = CurrencyFormat;
 }
 
+if (typeof (globalThis as any).Deno !== "undefined") {
+    (globalThis as any).CurrencyFormat = CurrencyFormat;
+}
+
 export default CurrencyFormat;

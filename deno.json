@@ -1,0 +1,29 @@
+{
+    "name": "@pphatdev/currency-format",
+    "version": "0.1.1",
+    "description": "Formatting numbers as currency with options for precision, thousands separator, and currency symbol. ",
+    "license": "MIT",
+    "entry": "./src/index.ts",
+    "exports": {
+        ".": "./dist/esm/index.js"
+    },
+    "type": "module",
+    "compilerOptions": {
+        "lib": [
+            "esnext",
+            "deno.ns"
+        ]
+    },
+    "lint": {
+        "rules": {
+            "tags": [
+                "recommended"
+            ]
+        }
+    },
+    "fmt": {
+        "options": {
+            "lineWidth": 80
+        }
+    }
+}
