@@ -111,12 +111,11 @@ export class CurrencyFormat {
      * @param {FormatParams} param - The parameters for formatting.
      * @returns {string} The formatted currency string.
      */
-    static format(param: FormatParams): string {
-
+    static format = (param: FormatParams): string => {
         const { value: number, options } = param;
         const { precision = 2, thousandsSeparator = ",", symbol = "", format = "USD" } = options;
 
-        let formatted: number = number as number;
+        let formatted: number | string = number;
 
         // check number type
         if (typeof number === "string") {
@@ -126,24 +125,29 @@ export class CurrencyFormat {
             }
         }
 
-        const amount = format === "KHR"
-            ? Math.round(formatted / 100) * 100
-            : formatted;
+        /**
+         * If the value is a number, we ensure it is rounded to the nearest integer
+         * for KHR format, otherwise we use the original number.
+        */
+        const amount = format === "KHR" ? Math.round(Number(formatted) / 100) * 100 : Number(formatted);
 
         const factor = Math.pow(10, precision);
         const round = Math.round((amount + 0.00000000000001) * factor) / factor;
-        let formattedNumber = round.toFixed(precision);
 
-        if (thousandsSeparator) {
-            formattedNumber = formattedNumber.replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSeparator);
+        const [integerPart, decimalPart] = String(round.toFixed(precision)).split(".");
+        let result = integerPart;
+
+        if (thousandsSeparator && integerPart) {
+            result = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSeparator);
         }
+
+        result = decimalPart ? `${result}.${decimalPart}` : result;
 
         if (String(format) === "KHR" && symbol === "៛") {
-            return formattedNumber + symbol;
+            return result + symbol;
         }
-
-        return symbol + formattedNumber;
-    }
+        return symbol + result;
+    };
 
 
     /**
