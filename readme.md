@@ -1,4 +1,6 @@
 # CurrencyFormat
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fpphatdev%2Fcurrency-format.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fpphatdev%2Fcurrency-format?ref=badge_shield)
+
 
 A utility for formatting currency values with customizable options.
 
@@ -141,3 +143,7 @@ console.log(result[1].formatted); // "$10,000.00"
 CurrencyFormat.getDefaultOptions();
 // => { trim: false, currencyFormat: 'USD', thousandsSeparator: ',', symbol: '' }
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fpphatdev%2Fcurrency-format.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fpphatdev%2Fcurrency-format?ref=badge_large)
